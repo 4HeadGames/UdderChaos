@@ -13,14 +13,12 @@ public class MouseLook : MonoBehaviour {
 	private Vector2 mouseLook;
 	private Vector2 smoothV;
 
-	// Use this for initialization
 	void Start () {
 		Cursor.lockState = CursorLockMode.Locked;
 
 		player = this.transform.parent.gameObject;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 		mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
@@ -29,10 +27,12 @@ public class MouseLook : MonoBehaviour {
 		smoothV.y = Mathf.Lerp(smoothV.y, mouseDelta.y, 1f / smoothing);
 
 		mouseLook += smoothV;
+        mouseLook.y = Mathf.Min(50, Mathf.Max(-50, mouseLook.y));
 
-		if (Cursor.lockState == CursorLockMode.Locked) {
-			transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
-			player.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, player.transform.up);
+        if (Cursor.lockState == CursorLockMode.Locked) {
+            transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
+
+            player.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, player.transform.up);
 		}
 
 		if (Cursor.lockState == CursorLockMode.None && Input.GetMouseButtonDown(0)) {
