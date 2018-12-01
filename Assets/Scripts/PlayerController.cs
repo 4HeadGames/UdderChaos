@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Cursor.lockState = CursorLockMode.Locked;
+		
 	}
 	
 	// Update is called once per frame
@@ -18,10 +18,5 @@ public class PlayerController : MonoBehaviour {
 		translation = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 		strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 		transform.Translate(strafe, 0, translation);
-
-		if (Input.GetKeyDown("escape")) {
-				// turn on the cursor
-				Cursor.lockState = CursorLockMode.None;
-		}
 	}
 }

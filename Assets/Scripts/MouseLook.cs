@@ -15,6 +15,8 @@ public class MouseLook : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Cursor.lockState = CursorLockMode.Locked;
+
 		player = this.transform.parent.gameObject;
 	}
 	
@@ -28,7 +30,17 @@ public class MouseLook : MonoBehaviour {
 
 		mouseLook += smoothV;
 
-		transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
-		player.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, player.transform.up);
+		if (Cursor.lockState == CursorLockMode.Locked) {
+			transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
+			player.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, player.transform.up);
+		}
+
+		if (Cursor.lockState == CursorLockMode.None && Input.GetMouseButtonDown(0)) {
+			Cursor.lockState = CursorLockMode.Locked;
+		}
+
+		if (Input.GetKeyDown("escape")) {
+			Cursor.lockState = CursorLockMode.None;
+		}
 	}
 }
