@@ -25,6 +25,14 @@ public class Player : MonoBehaviour {
     private void handleHit(RaycastHit hit) {
         if (Input.GetKeyDown(KeyCode.E)) {
             GameObject collision = getTopParent(hit.collider.gameObject);
+
+            var minDistance = 5;
+            var sqrDistance = minDistance * minDistance;
+            var distance = Camera.main.transform.position - collision.transform.position;
+            if (distance.sqrMagnitude > sqrDistance) {
+                return;
+            }
+
             switch (collision.name) {
                 case "Grass":
                     eatGrass();
