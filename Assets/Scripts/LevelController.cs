@@ -12,16 +12,21 @@ public class LevelController : MonoBehaviour {
             Quaternion rotation = Random.rotation;
             rotation.y = 0;
             rotation.w = 0;
-            Instantiate(chicken,
+            var newChicken = Instantiate(chicken,
                 new Vector3(
-                    Random.Range(this.backLeftCorner.x, this.forwardRightCorner.x),
+                    Random.Range(backLeftCorner.x, forwardRightCorner.x),
                     0,
-                    Random.Range(this.backLeftCorner.y, this.forwardRightCorner.y)),
+                    Random.Range(backLeftCorner.y, forwardRightCorner.y)),
                 rotation);
+            newChicken.name = "Chicken";
         }
     }
 
     void Update() {
 
+    }
+
+    public void Sacrifice(GameObject gameObject) {
+        Destroy(gameObject);
     }
 }

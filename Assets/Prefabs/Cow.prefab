@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 54763844568171988}
   - component: {fileID: 65427311943572918}
   - component: {fileID: 114729990827665918}
+  - component: {fileID: 114498426712783692}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Untagged
@@ -465,7 +466,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1926836660653962}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.35, y: 1.98, z: 13.84}
+  m_LocalPosition: {x: 5.53014, y: 2.07, z: -4.3699694}
   m_LocalScale: {x: 1.0184, y: 1.0184, z: 3.1554105}
   m_Children:
   - {fileID: 4599884987779660}
@@ -1155,6 +1156,19 @@ MonoBehaviour:
   sensitivity: 2
   smoothing: 2
   player: {fileID: 0}
+--- !u!114 &114498426712783692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1926836660653962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc14b94276a3894eaef9b42a985b3d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hunger: 10
+  levelController: {fileID: 0}
 --- !u!114 &114729990827665918
 MonoBehaviour:
   m_ObjectHideFlags: 1

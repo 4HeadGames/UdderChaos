@@ -4,38 +4,51 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	[SerializeField]
-	private int hunger = 10;
-	private Ray ray;
-	private RaycastHit hit;
+    [SerializeField]
+    private int hunger = 10;
+    private Ray ray;
+    private RaycastHit hit;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		if (Physics.Raycast(ray, out hit)) {
-			handleHit(hit);
-		}
-	}
+    public LevelController levelController;
 
-	private void handleHit(RaycastHit hit) {
-		if (Input.GetKeyDown(KeyCode.E)) {
-			switch(hit.collider.name) {
-				case "Grass":
-					eatGrass();
-					break;
-				default:
-					break;
-			}
-		}
-	}
+    void Start() {
 
-	private void eatGrass() {
-		Destroy(hit.transform.gameObject);
-		hunger += 2;
-	}
+    }
+
+    void Update() {
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit)) {
+            handleHit(hit);
+        }
+    }
+
+    private void handleHit(RaycastHit hit) {
+        if (Input.GetKeyDown(KeyCode.E)) {
+            GameObject collision = getTopParent(hit.collider.gameObject);
+            switch (collision.name) {
+                case "Grass":
+                    eatGrass();
+                    break;
+                case "Chicken":
+                    levelController.Sacrifice(collision);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private GameObject getTopParent(GameObject gameObject) {
+        var parent = gameObject;
+        while (parent.transform.parent != null) {
+            parent = parent.transform.parent.gameObject;
+        }
+
+        return parent;
+    }
+
+    private void eatGrass() {
+        Destroy(hit.transform.gameObject);
+        hunger += 2;
+    }
 }
