@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Chicken : MonoBehaviour {
     private float jumpTimer;
-    private float jumpCooldown = 3;
 
     private float velocity = 2;
     private float minVelocity = 1;
@@ -21,17 +20,21 @@ public class Chicken : MonoBehaviour {
     private Rigidbody body;
 
     void Start () {
-        this.jumpTimer = this.jumpCooldown;
+        this.jumpTimer = this.randomJumpCooldown();
         this.velocityUpdateTimer = this.velocityUpdateCooldown;
         this.rotationUpdateTimer = this.rotationCooldown;
 
         this.body = GetComponent<Rigidbody>();
     }
+
+    float randomJumpCooldown() {
+        return Random.Range(0.5f, 5);
+    }
 	
 	void Update () {
         this.jumpTimer -= Time.deltaTime;
         if (this.jumpTimer <= 0) {
-            this.jumpTimer = this.jumpCooldown;
+            this.jumpTimer = this.randomJumpCooldown();
             this.body.velocity += new Vector3(0, 3, 0);
         }
 
