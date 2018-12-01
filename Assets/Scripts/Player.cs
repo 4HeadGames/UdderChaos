@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD
 public class Player : MonoBehaviour {
 
 	[SerializeField]
@@ -39,14 +38,4 @@ public class Player : MonoBehaviour {
 		Destroy(hit.transform.gameObject);
 		hunger += 2;
 	}
-=======
-public class PlayerScript : MonoBehaviour {
-    void Start() {
-        
-    }
-
-    void Update() {
-
-    }
->>>>>>> eb09dde8240d33a6c9c2875702608824b613ac22
 }
