@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    public int hunger = 10;
+    public LevelController levelController;
+    public float speed = 10.0f;
 
-    [SerializeField]
-    private int hunger = 10;
+    private float translation;
+    private float strafe;
+
     private Ray ray;
     private RaycastHit hit;
-
-    public LevelController levelController;
 
     void Start() {
 
     }
 
     void Update() {
+        translation = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        transform.Translate(strafe, 0, translation);
+
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit)) {
             handleHit(hit);

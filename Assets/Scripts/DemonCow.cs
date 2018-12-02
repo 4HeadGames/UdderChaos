@@ -7,11 +7,11 @@ public class DemonCow : MonoBehaviour {
     public Text text;
 
     private AudioSource audioSource;
+    private AudioClip[] audioClips;
     private float intensity = 0;
     private float intensityCycleTime = 3;
     private float intensityMax = 0.6f;
     private bool increasingIntensity = false;
-    private AudioClip[] audioClips;
 
     private float talkingDuration = 0;
 

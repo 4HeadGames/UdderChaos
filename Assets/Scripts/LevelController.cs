@@ -20,7 +20,8 @@ public class LevelController : MonoBehaviour {
 
         for (int i = 0; i < 20; i++) {
             Quaternion rotation = Random.rotation;
-            rotation.y = 0;
+            rotation.x = 0;
+            rotation.z = 0;
             rotation.w = 0;
             var newChicken = Instantiate(chicken,
                 new Vector3(
