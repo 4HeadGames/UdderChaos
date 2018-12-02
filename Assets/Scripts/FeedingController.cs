@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FeedingController : MonoBehaviour {
     public Player player;
-    public AICow aiCow;
+    public AICow[] aiCows;
     public Grass grass;
 	void Start () {
         var playerCollider = player.GetComponent<Collider>();
@@ -27,6 +27,7 @@ public class FeedingController : MonoBehaviour {
             rotation.x = 0;
             rotation.z = 0;
             rotation.w = 0;
+            var aiCow = aiCows[Random.Range(0, aiCows.Length)];
             var newAiCow = Instantiate(aiCow,
                 new Vector3(
                     Random.Range(-30, 30),

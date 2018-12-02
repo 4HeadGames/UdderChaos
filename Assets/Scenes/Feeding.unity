@@ -113,6 +113,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &61573432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114368028533605182, guid: f06186a413e9fc44abf30e1058b4066e,
+    type: 2}
+  m_PrefabInternal: {fileID: 904793495}
+  m_Script: {fileID: 11500000, guid: 7fc14b94276a3894eaef9b42a985b3d6, type: 3}
 --- !u!1001 &904793495
 Prefab:
   m_ObjectHideFlags: 0
@@ -236,8 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7f1d73d22d9ef4e9ddf8b95cec48b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1649495719}
-  aiCow: {fileID: 114428719607307998, guid: 1be4773d25fdb614e9d73fb4b7cf3ac0, type: 2}
+  player: {fileID: 61573432}
+  aiCows:
+  - {fileID: 114902819962210504, guid: 7545783e457be7b419cfbd51d3ebcd1d, type: 2}
+  - {fileID: 114835546626881180, guid: e8b7cd3cb0f9cec4683086f01edea285, type: 2}
   grass: {fileID: 114661752869263350, guid: 44d4b26286fcf76449caae01e4025d76, type: 2}
 --- !u!4 &1304445469
 Transform:
@@ -252,12 +260,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1649495719 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114498426712783692, guid: f06186a413e9fc44abf30e1058b4066e,
-    type: 2}
-  m_PrefabInternal: {fileID: 904793495}
-  m_Script: {fileID: 11500000, guid: 7fc14b94276a3894eaef9b42a985b3d6, type: 3}
 --- !u!1 &2059071955
 GameObject:
   m_ObjectHideFlags: 0
