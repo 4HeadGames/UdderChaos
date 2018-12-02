@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
     public int hunger = 10;
     public LevelController levelController;
     public float speed = 10.0f;
+    public bool canMove = true;
 
     private float translation;
     private float strafe;
@@ -18,9 +19,11 @@ public class Player : MonoBehaviour {
     }
 
     void Update() {
-        translation = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        transform.Translate(strafe, 0, translation);
+        if (canMove) {
+            translation = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+            strafe = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+            transform.Translate(strafe, 0, translation);
+        }
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit)) {

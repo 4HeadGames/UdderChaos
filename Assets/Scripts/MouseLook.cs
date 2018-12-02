@@ -18,7 +18,7 @@ public class MouseLook : MonoBehaviour {
 	void Start () {
 		Cursor.lockState = CursorLockMode.Locked;
 
-		player = this.transform.parent.gameObject;
+		player = transform.parent.gameObject;
 	}
 	
 	void Update () {

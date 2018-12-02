@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class IntroController : MonoBehaviour {
     public DemonCow demonCow;
@@ -18,9 +19,13 @@ public class IntroController : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (!demonCow.Talking() && line < script.Length) {
-            demonCow.SayText(script[line]);
-            line += 1;
+        if (!demonCow.Talking()) {
+            if (line < script.Length) {
+                demonCow.SayText(script[line]);
+                line += 1;
+            } else {
+                SceneManager.LoadScene(Store.NextLevel, LoadSceneMode.Single);
+            }
         }
 	}
 }
