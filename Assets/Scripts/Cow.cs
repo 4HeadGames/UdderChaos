@@ -24,9 +24,7 @@ public class Cow : MonoBehaviour {
             transform.position = Vector3.MoveTowards(transform.position, grass[index].transform.position, step);
         }
 
-        if (transform.position.x <= grass[index].transform.position.x + 2.0f ||
-            transform.position.x >= grass[index].transform.position.x - 2.0f) {
-                
+        if (transform.position.x <= grass[index].transform.position.x + 2.0f) {
             eatGrass();
         }
 	}
