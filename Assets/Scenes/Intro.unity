@@ -1424,7 +1424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275074ffe044f0148b5150ecfe97f5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  demonCow: {fileID: 0}
+  demonCow: {fileID: 111721129}
 --- !u!4 &1671616331
 Transform:
   m_ObjectHideFlags: 0
