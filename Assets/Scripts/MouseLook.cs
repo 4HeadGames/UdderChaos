@@ -10,6 +10,8 @@ public class MouseLook : MonoBehaviour {
 	public float smoothing = 2.0f;
 	public GameObject player;
 
+    public bool canRotate = true;
+
 	private Vector2 mouseLook;
 	private Vector2 smoothV;
 
@@ -26,14 +28,16 @@ public class MouseLook : MonoBehaviour {
 		smoothV.x = Mathf.Lerp(smoothV.x, mouseDelta.x, 1f / smoothing);
 		smoothV.y = Mathf.Lerp(smoothV.y, mouseDelta.y, 1f / smoothing);
 
-		mouseLook += smoothV;
-        mouseLook.y = Mathf.Min(50, Mathf.Max(-50, mouseLook.y));
+        mouseLook += smoothV;
+        if (!canRotate) {
+            mouseLook.x = Mathf.Clamp(mouseLook.x, -20, 20);
+        }
+        mouseLook.y = Mathf.Clamp(mouseLook.y, -20, 20);
 
         if (Cursor.lockState == CursorLockMode.Locked) {
             transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
-
-            player.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, player.transform.up);
-		}
+            player.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, Vector3.up);
+        }
 
 		if (Cursor.lockState == CursorLockMode.None && Input.GetMouseButtonDown(0)) {
 			Cursor.lockState = CursorLockMode.Locked;
