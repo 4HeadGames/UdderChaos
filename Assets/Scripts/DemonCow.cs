@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DemonCow : MonoBehaviour {
+    public Text text;
+
     private AudioSource audioSource;
     private float intensity = 0;
     private float intensityCycleTime = 3;
@@ -10,6 +13,7 @@ public class DemonCow : MonoBehaviour {
     private bool increasingIntensity = false;
     private AudioClip[] audioClips;
 
+    private float talkingDuration = 0;
 
     void Start () {
         audioSource = GetComponent<AudioSource>();
@@ -33,8 +37,11 @@ public class DemonCow : MonoBehaviour {
     }
 
     void Update () {
-        if (Random.value > 0.98) {
-            audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length - 1)]);
+        if (talkingDuration > 0) {
+            talkingDuration -= Time.deltaTime;
+            if (Random.value > 0.98) {
+                audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length - 1)]);
+            }
         }
 
         if (increasingIntensity) {
@@ -52,8 +59,22 @@ public class DemonCow : MonoBehaviour {
         }
 
         var childRenderers = transform.root.GetComponentsInChildren<Renderer>();
+        Color color = new Color(intensity, 0, 0);
         foreach (var renderer in childRenderers) {
-           renderer.material.SetColor("_EmissionColor", new Color(intensity, 0, 0));
+           renderer.material.SetColor("_EmissionColor", color);
         }
+
+        text.color = color;
+    }
+
+    public void SayText(string dialogue) {
+        var words = dialogue.Split(' ').Length;
+        talkingDuration = words * 1;
+
+        text.text = dialogue;
+    }
+
+    public bool Talking() {
+        return talkingDuration > 0;
     }
 }

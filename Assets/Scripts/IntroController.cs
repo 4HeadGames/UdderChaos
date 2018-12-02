@@ -4,13 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class IntroController : MonoBehaviour {
-    public Transform demonCow;
+    public DemonCow demonCow;
+    private string[] script = {
+        "Hello Pitiful Cow...",
+        "Submit your tribute in my honor.",
+        "I require blood sacrifices...",
+        "Satisfy this thirst tonight... you've been warned",
+    };
 
 	void Start () {
 		
 	}
 	
 	void Update () {
-        // demonCow.transform.Translate(new Vector3(0, 0, 0.1f));
+        if (!demonCow.Talking()) {
+            demonCow.SayText("Hello...");
+        }
 	}
 }
