@@ -3,36 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Cow : MonoBehaviour {
-
-    private GameObject[] grass;
+    private GameObject targetGrass;
     private int index;
-    private bool eatingGrass;
+    private bool eatingGrass = false;
     public float speed;
 	
     void Start () {
-        grass = GameObject.FindGameObjectsWithTag("Grass");
-        index = 0;
-        eatingGrass = false;
     }
 
 	// Update is called once per frame
 	void Update () {
-        float step = speed * Time.deltaTime;
-
-        if (!eatingGrass && grass.Length > 0) {
-            // transform.LookAt(grass[index].transform);
-            transform.position = Vector3.MoveTowards(transform.position, grass[index].transform.position, step);
+        if (targetGrass == null) {
+            var allGrass = GameObject.FindGameObjectsWithTag("Grass");
+            if (allGrass.Length == 0) {
+                return;
+            }
+            targetGrass = allGrass[Random.Range(0, allGrass.Length)];
         }
 
-        if (transform.position.x <= grass[index].transform.position.x + 2.0f) {
-            eatGrass();
+        float step = speed * Time.deltaTime;
+
+        if (!eatingGrass) {
+            var lookPos = targetGrass.transform.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
+            transform.position = Vector3.MoveTowards(transform.position, targetGrass.transform.position, step);
+        }
+
+        float minDistance = 4f;
+        var sqrDistance = minDistance * minDistance;
+        var distance = transform.position - targetGrass.transform.position;
+        if (distance.sqrMagnitude < sqrDistance) {
+            eatGrass(targetGrass);
         }
 	}
 
-    void eatGrass() {
+    void eatGrass(GameObject grass) {
         eatingGrass = true;
-        Destroy(grass[index]);
-        index += 1;
+        Destroy(grass);
         eatingGrass = false;
     }
 

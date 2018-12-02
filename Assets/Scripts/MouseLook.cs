@@ -32,7 +32,7 @@ public class MouseLook : MonoBehaviour {
         if (!canRotate) {
             mouseLook.x = Mathf.Clamp(mouseLook.x, -20, 20);
         }
-        mouseLook.y = Mathf.Clamp(mouseLook.y, -20, 20);
+        mouseLook.y = Mathf.Clamp(mouseLook.y, -40, 20);
 
         if (Cursor.lockState == CursorLockMode.Locked) {
             transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);

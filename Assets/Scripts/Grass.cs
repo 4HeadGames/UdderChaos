@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class Grass : MonoBehaviour {
 
-	private Outline outline;
+    private Outline outline;
 
-	// Use this for initialization
-	void Start () {
-		outline = gameObject.GetComponent<Outline>();
-		outline.enabled = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start() {
+        outline = gameObject.GetComponent<Outline>();
+        outline.enabled = false;
+    }
 
-	}
+    // Update is called once per frame
+    void Update() {
 
-	void OnMouseOver() {
-		outline.enabled = true;
-	}
+    }
 
-	void OnMouseExit() {
-		outline.enabled = false;
-	}
+    void OnMouseOver() {
+        var minDistance = 5;
+        var sqrDistance = minDistance * minDistance;
+        var distance = Camera.main.transform.position - transform.position;
+        if (distance.sqrMagnitude <= sqrDistance) {
+            outline.enabled = true;
+        }
+    }
+
+    void OnMouseExit() {
+        outline.enabled = false;
+    }
 
 }
