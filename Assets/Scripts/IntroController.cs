@@ -11,14 +11,16 @@ public class IntroController : MonoBehaviour {
         "I require blood sacrifices...",
         "Satisfy this thirst tonight... you've been warned",
     };
+    private int line = 0;
 
 	void Start () {
 		
 	}
 	
 	void Update () {
-        if (!demonCow.Talking()) {
-            demonCow.SayText("Hello...");
+        if (!demonCow.Talking() && line < script.Length) {
+            demonCow.SayText(script[line]);
+            line += 1;
         }
 	}
 }
