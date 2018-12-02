@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
-    public int hunger = 10;
     public LevelController levelController;
     public float speed = 10.0f;
     public bool canMove = true;
@@ -14,8 +14,15 @@ public class Player : MonoBehaviour {
     private Ray ray;
     private RaycastHit hit;
 
-    void Start() {
+    public float currentHunger { get; set; }
+    public float maxHunger { get; set; }
+    public Slider hungerBar;
 
+    void Start() {
+        maxHunger = 10;
+        currentHunger = maxHunger;
+
+        hungerBar.value = CalculateHunger();
     }
 
     void Update() {
@@ -64,8 +71,18 @@ public class Player : MonoBehaviour {
         return parent;
     }
 
+    float CalculateHunger() {
+        return currentHunger / maxHunger;
+    }
+
     private void eatGrass() {
         Destroy(hit.transform.gameObject);
-        hunger += 2;
+        currentHunger -= 2;
+        hungerBar.value = CalculateHunger();
+
+        if (currentHunger <= 0) {
+            // u ded
+            // Destroy(gameObject);
+        }
     }
 }
