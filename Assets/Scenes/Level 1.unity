@@ -541,7 +541,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1193688210
 Prefab:
@@ -645,6 +645,11 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114498426712783692, guid: f06186a413e9fc44abf30e1058b4066e,
+        type: 2}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 2103492497}
+    - target: {fileID: 114368028533605182, guid: f06186a413e9fc44abf30e1058b4066e,
         type: 2}
       propertyPath: levelController
       value: 
