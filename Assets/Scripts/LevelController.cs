@@ -52,9 +52,6 @@ public class LevelController : MonoBehaviour {
         updateSacrificeText();
     }
 
-    private void fadeScreen() {
-    }
-
     private void updateSacrificeText() {
         SacrificeCounter.text = "Chicken Sacrifices: " + sacrificesMade + " / " + SacrificesNeeded;
     }
