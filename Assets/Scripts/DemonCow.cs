@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DemonCow : MonoBehaviour {
     public Text text;
+    public Player player;
 
     private AudioSource audioSource;
     private AudioClip[] audioClips;
@@ -12,6 +13,7 @@ public class DemonCow : MonoBehaviour {
     private float intensityCycleTime = 3;
     private float intensityMax = 0.6f;
     private bool increasingIntensity = false;
+    private Vector3 initialPosition;
 
     private float talkingDuration = 0;
 
@@ -34,6 +36,8 @@ public class DemonCow : MonoBehaviour {
             Resources.Load<AudioClip>("Sounds/Demon Cow/13"),
             Resources.Load<AudioClip>("Sounds/Demon Cow/14"),
         };
+
+        initialPosition = transform.position;
     }
 
     void Update () {
@@ -63,6 +67,12 @@ public class DemonCow : MonoBehaviour {
         foreach (var renderer in childRenderers) {
            renderer.material.SetColor("_EmissionColor", color);
         }
+
+        if (Random.value > 0.99) {
+            transform.position = initialPosition + new Vector3(
+                Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
+        }
+        transform.LookAt(player.transform);
 
         text.color = color;
     }
