@@ -72,7 +72,8 @@ GameObject:
   - component: {fileID: 4317037608023404}
   - component: {fileID: 65793730939973266}
   - component: {fileID: 114677069599887470}
-  - component: {fileID: 195175275765489030}
+  - component: {fileID: 195882249809330398}
+  - component: {fileID: 114192327358231060}
   m_Layer: 9
   m_Name: Farmer 1
   m_TagString: Untagged
@@ -112,8 +113,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1910024790860092}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -20.951149, y: 0.5, z: 32.62}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -24.05115, y: -0.71300006, z: 53.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4311282774562360}
@@ -221,7 +222,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 10
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 41
   m_CookieSize: 10
   m_Shadows:
@@ -247,6 +248,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114192327358231060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1910024790860092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79675c9fed84ed54da68b8b8ea3976b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114405924669544682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,7 +284,8 @@ MonoBehaviour:
   points:
   - {fileID: 0}
   - {fileID: 0}
---- !u!195 &195175275765489030
+  - {fileID: 0}
+--- !u!195 &195882249809330398
 NavMeshAgent:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -281,7 +294,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
