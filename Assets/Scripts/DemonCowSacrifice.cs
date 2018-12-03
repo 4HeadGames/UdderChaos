@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DemonCowSacrifice : MonoBehaviour {
     public GameObject SacrificeTarget;
+    public bool sacrificingPlayer = false;
 
     private float sacrificeDelay = 3;
     private bool leaving = false;
@@ -27,20 +28,26 @@ public class DemonCowSacrifice : MonoBehaviour {
         var animations = animator.runtimeAnimatorController.animationClips;
 
         if (leaving) {
-            SacrificeTarget.transform.LookAt(transform);
-            SacrificeTarget.transform.position = Vector3.MoveTowards(
-                SacrificeTarget.transform.position,
-                transform.position, 0.05f);
+            if (!sacrificingPlayer) {
+                SacrificeTarget.transform.LookAt(transform);
+                SacrificeTarget.transform.position = Vector3.MoveTowards(
+                    SacrificeTarget.transform.position,
+                    transform.position, 0.05f);
+            }
             if (isPlaying(animator) || isPlaying(sacrificeAnimator)) {
                 return;
             }
-            Destroy(SacrificeTarget);
+            if (!sacrificingPlayer) {
+                Destroy(SacrificeTarget);
+            }
             Destroy(gameObject);
         } else if (sacrificeDelay <= 0) {
-            animator.Play("Despawn");
+            if (!sacrificingPlayer) {
+                animator.Play("Despawn");
+            }
             sacrificeAnimator.Play("Sacrifice");
             leaving = true;
-        } else {
+        } else if (!sacrificingPlayer) {
             SacrificeTarget.transform.LookAt(transform);
             SacrificeTarget.transform.position = sacrificeTargetInitialPosition;
         }

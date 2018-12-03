@@ -37,10 +37,8 @@ public class MouseLook : MonoBehaviour {
         }
         mouseLook.y = Mathf.Clamp(mouseLook.y, yAngleRange.x, yAngleRange.y);
 
-        if (Cursor.lockState == CursorLockMode.Locked) {
-            transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
-            player.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, Vector3.up);
-        }
+        transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
+        player.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, Vector3.up);
 
 		if (Cursor.lockState == CursorLockMode.None && Input.GetMouseButtonDown(0)) {
 			Cursor.lockState = CursorLockMode.Locked;

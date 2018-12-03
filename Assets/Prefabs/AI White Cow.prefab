@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 82217750563606674}
   m_Layer: 0
   m_Name: AI White Cow
-  m_TagString: Untagged
+  m_TagString: AI Cow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

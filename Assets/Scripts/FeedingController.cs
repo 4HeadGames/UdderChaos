@@ -5,16 +5,26 @@ using UnityEngine;
 public class FeedingController : MonoBehaviour {
     public Player player;
     public Camera camera;
+    public DemonCowSacrifice DemonCow;
     public AICow[] aiCows;
     public Grass grass;
+
     private float sacrificeMod;
-	void Start () {
+    private Color initialSkyTint = new Color(128 / 255f, 128 / 255f, 128 / 255f);
+    private Color initialGroundColor = new Color(17 / 255f, 36 / 255f, 9 / 255f);
+    private float initialSkyExposure = 1.3f;
+
+    void Start() {
+        RenderSettings.skybox.SetColor("_SkyTint", initialSkyTint);
+        RenderSettings.skybox.SetColor("_GroundColor", initialGroundColor);
+        RenderSettings.skybox.SetFloat("_Exposure", initialSkyExposure);
+
         var playerCollider = player.GetComponent<Collider>();
-        
+
         sacrificeMod = player.lastSacrificeCount * 0.1f;
 
         var grassCount = 200;
-        
+
         if (player.lastSacrificeCount < 5) {
             grassCount = Mathf.FloorToInt(200.0f * sacrificeMod);
         }
@@ -48,24 +58,74 @@ public class FeedingController : MonoBehaviour {
             newAiCow.name = "AI Cow";
         }
     }
-	
-	void Update () {
-		if (player.currentHunger == 0) {
-            FieryHole();
+
+    void Update() {
+        FieryDeath();
+        if (player.currentHunger == 0) {
         }
-	}
+    }
 
-    void FieryHole() {
-        // fall through a fiery hole
-        // Step 1 - lock player movement
-        // Step 2 - Rotate player to be facing up
-        // Step 3 - Pull player through ground
-        // Step 4 - Reload scene
+    private bool startedFiery = false;
+    private float stareTime;
+    private float stareTotalTime = 4;
+    private DemonCowSacrifice demonCow;
+    private Material skyBoxInitial;
+    private Material skyBoxTarget;
 
-        player.canMove = false;
-        player.GetComponent<Collider>().enabled = false;
-        camera.GetComponent<MouseLook>().canRotate = false;
-        var target = new Quaternion(-90.0f, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
-        player.transform.Rotate(-90, player.transform.rotation.y, player.transform.rotation.z);
+    void FieryDeath() {
+        var mouseLook = camera.GetComponent<MouseLook>();
+
+        if (!startedFiery) {
+            GameObject.Find("HungerBar").GetComponent<RectTransform>().localScale = Vector3.zero; ;
+            GameObject.Find("Hunger Label").GetComponent<RectTransform>().localScale = Vector3.zero;
+
+            foreach (var cow in GameObject.FindGameObjectsWithTag("AI Cow")) {
+                cow.GetComponent<AudioSource>().volume = 0;
+            }
+            var rigidBody = player.GetComponent<Rigidbody>();
+            rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
+            skyBoxInitial = RenderSettings.skybox;
+
+            startedFiery = true;
+            var demonCowPosition = player.transform.position + 12 * player.transform.forward;
+            demonCowPosition.y = 2;
+            demonCow = Instantiate(DemonCow,
+                demonCowPosition,
+                Quaternion.identity);
+            demonCow.transform.LookAt(camera.transform);
+            demonCow.SacrificeTarget = player.gameObject;
+            demonCow.sacrificingPlayer = true;
+
+            player.canMove = false;
+            mouseLook.canRotate = false;
+            mouseLook.xAngleRange = new Vector2(0, 0);
+
+            stareTime = stareTotalTime;
+        }
+
+        if (demonCow != null) {
+            mouseLook.yAngleRange = new Vector2(5, 5);
+        }
+
+        if (stareTime > 0) {
+            stareTime -= Time.deltaTime;
+            float lerpTime = (stareTotalTime - stareTime) / stareTotalTime;
+            RenderSettings.skybox.SetColor("_SkyTint", 
+                Color.Lerp(initialSkyTint, Color.black, lerpTime));
+            RenderSettings.skybox.SetColor("_GroundColor",
+                Color.Lerp(initialGroundColor, Color.black, lerpTime));
+            RenderSettings.skybox.SetFloat("_Exposure",
+                Mathf.Lerp(initialSkyExposure, 0, lerpTime));
+        } else {
+            foreach (var cow in GameObject.FindGameObjectsWithTag("AI Cow")) {
+                Destroy(cow);
+            }
+            var ground = GameObject.Find("Ground");
+            Destroy(ground);
+
+            var rigidBody = player.GetComponent<Rigidbody>();
+            rigidBody.constraints = RigidbodyConstraints.None;
+        }
     }
 }
