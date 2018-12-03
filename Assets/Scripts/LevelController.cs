@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour {
     public GameObject Animal;
+    public DemonCowSacrifice DemonCow;
     public string AnimalName;
     public string NextLevel;
     public int SacrificesNeeded;
@@ -53,7 +54,15 @@ public class LevelController : MonoBehaviour {
     }
 
     public void Sacrifice(GameObject gameObject) {
-        Destroy(gameObject);
+        /*
+        var demonCow = Instantiate(DemonCow,
+            gameObject
+            new Vector3(
+                ,
+                2,
+                Random.Range(backLeftCorner.y, forwardRightCorner.y)),
+            rotation);
+            */
         sacrificesMade += 1;
         sacrificesMade = Mathf.Clamp(sacrificesMade, 0, SacrificesNeeded);
 

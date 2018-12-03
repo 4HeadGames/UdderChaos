@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class IntroController : MonoBehaviour {
     public DemonCow demonCow;
     private string[] script = {
-        "Hello Pitiful Cow...",
+        "Hello pitiful Mortal...",
+        "I am Moogramal.",
         "Submit your tribute in my honor.",
         "I require blood sacrifices...",
         "Satisfy this thirst tonight... you've been warned",

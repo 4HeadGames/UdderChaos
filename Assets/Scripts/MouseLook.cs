@@ -12,14 +12,17 @@ public class MouseLook : MonoBehaviour {
 
     public bool canRotate = true;
 
-	private Vector2 mouseLook;
-	private Vector2 smoothV;
+	public Vector2 mouseLook;
+    public Vector2 xAngleRange = new Vector2(-20, 20);
+    public Vector2 yAngleRange = new Vector2(-40, 20);
+
+    private Vector2 smoothV;
 
 	void Start () {
 		Cursor.lockState = CursorLockMode.Locked;
 
 		player = transform.parent.gameObject;
-	}
+    }
 	
 	void Update () {
 		var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
@@ -30,9 +33,9 @@ public class MouseLook : MonoBehaviour {
 
         mouseLook += smoothV;
         if (!canRotate) {
-            mouseLook.x = Mathf.Clamp(mouseLook.x, -20, 20);
+            mouseLook.x = Mathf.Clamp(mouseLook.x, xAngleRange.x, xAngleRange.y);
         }
-        mouseLook.y = Mathf.Clamp(mouseLook.y, -40, 20);
+        mouseLook.y = Mathf.Clamp(mouseLook.y, yAngleRange.x, yAngleRange.y);
 
         if (Cursor.lockState == CursorLockMode.Locked) {
             transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);

@@ -273,9 +273,50 @@ RectTransform:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114376162839826888, guid: 41cf693bdf0ac3e47b8c5f61e3739751,
     type: 2}
-  m_PrefabInternal: {fileID: 1002930546}
+  m_PrefabInternal: {fileID: 1770196290}
   m_Script: {fileID: 11500000, guid: 705c87f9f41410b4f814a63376b68003, type: 3}
---- !u!1001 &1002930546
+--- !u!1 &1671616329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1671616331}
+  - component: {fileID: 1671616330}
+  m_Layer: 0
+  m_Name: IntroController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1671616330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1671616329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275074ffe044f0148b5150ecfe97f5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  demonCow: {fileID: 840192263}
+--- !u!4 &1671616331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1671616329}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.765608, y: -5.870764, z: -26.225567}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1770196290
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -322,47 +363,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41cf693bdf0ac3e47b8c5f61e3739751, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1671616329
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1671616331}
-  - component: {fileID: 1671616330}
-  m_Layer: 0
-  m_Name: IntroController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1671616330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1671616329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 275074ffe044f0148b5150ecfe97f5f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  demonCow: {fileID: 840192263}
---- !u!4 &1671616331
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1671616329}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.765608, y: -5.870764, z: -26.225567}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1821299596
 GameObject:
   m_ObjectHideFlags: 0

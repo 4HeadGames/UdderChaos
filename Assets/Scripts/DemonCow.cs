@@ -68,11 +68,9 @@ public class DemonCow : MonoBehaviour {
            renderer.material.SetColor("_EmissionColor", color);
         }
 
-        if (Random.value > 0.99) {
-            transform.position = initialPosition + new Vector3(
-                Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
-        }
-        transform.LookAt(player.transform);
+        //transform.position = initialPosition + new Vector3(
+        //    Random.Range(-0.01f, 0.01f), Random.Range(-0.01f, 0.01f), Random.Range(-0.01f, 0.01f));
+        // transform.LookAt(player.transform);
 
         text.color = color;
     }
