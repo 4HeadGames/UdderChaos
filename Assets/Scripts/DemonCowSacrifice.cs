@@ -10,16 +10,20 @@ public class DemonCowSacrifice : MonoBehaviour {
     private bool leaving = false;
     private Vector3 sacrificeTargetInitialPosition;
 
-    void Start () {
-		
-	}
-	
-	void Update () {
+    void Start() {
+
+    }
+
+    void Update() {
         if (SacrificeTarget == null) {
             return;
         }
         if (sacrificeTargetInitialPosition == Vector3.zero) {
             sacrificeTargetInitialPosition = SacrificeTarget.transform.position;
+            if (!sacrificingPlayer) {
+                var rigidBody = SacrificeTarget.GetComponent<Rigidbody>();
+                rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+            }
         }
 
         sacrificeDelay -= Time.deltaTime;
