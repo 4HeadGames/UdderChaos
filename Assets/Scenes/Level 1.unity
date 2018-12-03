@@ -305,7 +305,7 @@ Prefab:
     - target: {fileID: 224919813034387498, guid: 874b3ddac6fa0dc42926d3c826d95628,
         type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224919813034387498, guid: 874b3ddac6fa0dc42926d3c826d95628,
         type: 2}
@@ -345,7 +345,7 @@ Prefab:
     - target: {fileID: 224919813034387498, guid: 874b3ddac6fa0dc42926d3c826d95628,
         type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224919813034387498, guid: 874b3ddac6fa0dc42926d3c826d95628,
         type: 2}
@@ -418,70 +418,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 691123345}
   m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1001 &735950001
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4140077007636310, guid: cfb0d0959345bfc48a080d16218460f3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 5.53014
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140077007636310, guid: cfb0d0959345bfc48a080d16218460f3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 7.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140077007636310, guid: cfb0d0959345bfc48a080d16218460f3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -10.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140077007636310, guid: cfb0d0959345bfc48a080d16218460f3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140077007636310, guid: cfb0d0959345bfc48a080d16218460f3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140077007636310, guid: cfb0d0959345bfc48a080d16218460f3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140077007636310, guid: cfb0d0959345bfc48a080d16218460f3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140077007636310, guid: cfb0d0959345bfc48a080d16218460f3, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140077007636310, guid: cfb0d0959345bfc48a080d16218460f3, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114607734526189426, guid: cfb0d0959345bfc48a080d16218460f3, type: 2}
-  m_SourcePrefab: {fileID: 100100000, guid: cfb0d0959345bfc48a080d16218460f3, type: 2}
-  m_IsPrefabAsset: 0
---- !u!1 &735950002 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1886288672016892, guid: cfb0d0959345bfc48a080d16218460f3,
-    type: 2}
-  m_PrefabInternal: {fileID: 735950001}
---- !u!114 &735950003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 735950002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6692342772deb494aa207ddc3ec78953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SacrificeTarget: {fileID: 0}
 --- !u!1001 &786609680
 Prefab:
   m_ObjectHideFlags: 0
@@ -605,7 +541,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1193688210
 Prefab:
@@ -718,6 +654,10 @@ Prefab:
       propertyPath: levelController
       value: 
       objectReference: {fileID: 2103492497}
+    - target: {fileID: 1865065055025038, guid: f06186a413e9fc44abf30e1058b4066e, type: 2}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f06186a413e9fc44abf30e1058b4066e, type: 2}
   m_IsPrefabAsset: 0
@@ -787,7 +727,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1923278190
 Prefab:
@@ -884,7 +824,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4120679028125866, guid: 0f2b24fec5ae6a74482f007892bb6009, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1934476631965854, guid: 0f2b24fec5ae6a74482f007892bb6009, type: 2}
       propertyPath: m_Name
@@ -938,7 +878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1266418014}
   Animal: {fileID: 1340749463452236, guid: f6593f6d5227d68479ca8ed5640b99e8, type: 2}
-  DemonCow: {fileID: 0}
+  DemonCow: {fileID: 114846426630458136, guid: c2b8ef4fc0878464ea336184656a70ce, type: 2}
   AnimalName: Chicken
   NextLevel: Level 2
   SacrificesNeeded: 5

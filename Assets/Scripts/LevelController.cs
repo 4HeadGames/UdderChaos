@@ -22,6 +22,8 @@ public class LevelController : MonoBehaviour {
     private bool screenFading = false;
     private bool caught = false;
 
+    private DemonCowSacrifice spawnedDemonCow;
+
     void Start() {
         Store.AnimalName = AnimalName;
         Store.MissingSacrifices = SacrificesNeeded;
@@ -36,7 +38,7 @@ public class LevelController : MonoBehaviour {
             var newChicken = Instantiate(Animal,
                 new Vector3(
                     Random.Range(backLeftCorner.x, forwardRightCorner.x),
-                    2,
+                    1f,
                     Random.Range(backLeftCorner.y, forwardRightCorner.y)),
                 rotation);
             newChicken.name = "Chicken";
@@ -56,15 +58,18 @@ public class LevelController : MonoBehaviour {
     }
 
     public void Sacrifice(GameObject gameObject) {
-        /*
-        var demonCow = Instantiate(DemonCow,
-            gameObject
-            new Vector3(
-                ,
-                2,
-                Random.Range(backLeftCorner.y, forwardRightCorner.y)),
-            rotation);
-            */
+        if (spawnedDemonCow != null) {
+            // Can only sacrifice one at a time.
+            return;
+        }
+        var player = GameObject.Find("Player");
+        var demonCowPosition = player.transform.position + 8 * player.transform.forward;
+        demonCowPosition.y = 2;
+        spawnedDemonCow = Instantiate(DemonCow,
+            demonCowPosition,
+            Quaternion.identity);
+        spawnedDemonCow.transform.LookAt(gameObject.transform);
+        spawnedDemonCow.SacrificeTarget = gameObject;
         sacrificesMade += 1;
         sacrificesMade = Mathf.Clamp(sacrificesMade, 0, SacrificesNeeded);
 
