@@ -13,18 +13,19 @@ public class LevelController : MonoBehaviour {
     public int SacrificesNeeded;
     public Text SacrificeCounter;
     public Text CaughtText;
-    public RawImage ScreenFade;
 
+    private RawImage screenFade;
     private Vector2 backLeftCorner = new Vector2(-15, 5);
     private Vector2 forwardRightCorner = new Vector2(15, 75);
 
     private int sacrificesMade = 0;
     private bool screenFading = false;
-    private bool caught = false;
 
     private DemonCowSacrifice spawnedDemonCow;
 
     void Start() {
+        screenFade = GameObject.Find("RawImage").GetComponent<RawImage>(); 
+
         Store.AnimalName = AnimalName;
         Store.MissingSacrifices = SacrificesNeeded;
 
@@ -48,9 +49,8 @@ public class LevelController : MonoBehaviour {
 
     void Update() {
         if (screenFading) {
-            player.lastSacrificeCount = sacrificesMade;
-            float a = Mathf.Min(1f, ScreenFade.color.a + 0.005f);
-            ScreenFade.color = new Color(0, 0, 0, a);
+            float a = Mathf.Min(1f, screenFade.color.a + 0.005f);
+            screenFade.color = new Color(0, 0, 0, a);
             if (a >= 1f) {
                 Store.NextLevel = NextLevel;
                 SceneManager.LoadScene("Demon Rating", LoadSceneMode.Single);

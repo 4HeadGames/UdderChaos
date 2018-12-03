@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FeedingController : MonoBehaviour {
     public Player player;
@@ -14,6 +15,9 @@ public class FeedingController : MonoBehaviour {
     private Color initialGroundColor = new Color(17 / 255f, 36 / 255f, 9 / 255f);
     private float initialSkyExposure = 1.3f;
 
+    private float feedingTime = 30;
+    private float preIntroFeedingTime = 30;
+
     void Start() {
         RenderSettings.skybox.SetColor("_SkyTint", initialSkyTint);
         RenderSettings.skybox.SetColor("_GroundColor", initialGroundColor);
@@ -21,12 +25,12 @@ public class FeedingController : MonoBehaviour {
 
         var playerCollider = player.GetComponent<Collider>();
 
-        sacrificeMod = player.lastSacrificeCount * 0.1f;
+        sacrificeMod = (Store.NeededSacrifices - Store.MissingSacrifices) * 0.1f;
 
         var grassCount = 200;
 
-        if (player.lastSacrificeCount < 5) {
-            grassCount = Mathf.FloorToInt(200.0f * sacrificeMod);
+        if (Store.MissingSacrifices > 0) {
+            grassCount = Mathf.FloorToInt(200 * sacrificeMod);
         }
 
         for (int i = 0; i < grassCount; i++) {
@@ -57,10 +61,23 @@ public class FeedingController : MonoBehaviour {
                 rotation);
             newAiCow.name = "AI Cow";
         }
+
+        if (Store.PreIntro) {
+            GameObject.Find("HungerBar").GetComponent<RectTransform>().localScale = Vector3.zero;
+            GameObject.Find("Hunger Label").GetComponent<RectTransform>().localScale = Vector3.zero;
+        }
     }
 
     void Update() {
-        if (player.currentHunger == 0) {
+        if (Store.PreIntro) {
+            preIntroFeedingTime -= Time.deltaTime;
+            if (preIntroFeedingTime <= 0) {
+                Store.PreIntro = false;
+                SceneManager.LoadScene("Intro", LoadSceneMode.Single);
+            }
+        }
+
+        if (!Store.PreIntro && player.currentHunger == 0) {
             FieryDeath();
         }
     }

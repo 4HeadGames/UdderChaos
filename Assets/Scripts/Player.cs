@@ -17,7 +17,6 @@ public class Player : MonoBehaviour {
     public float currentHunger { get; set; }
     public float maxHunger { get; set; }
     public Slider hungerBar;
-    public float lastSacrificeCount;
 
     void Start() {
         maxHunger = 10;

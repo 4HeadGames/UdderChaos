@@ -233,58 +233,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f2b24fec5ae6a74482f007892bb6009, type: 2}
   m_IsPrefabAsset: 0
---- !u!1001 &244989927
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4642709106596964, guid: ea33a812e62517f4aae57545a3122eb6, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.986
-      objectReference: {fileID: 0}
-    - target: {fileID: 4642709106596964, guid: ea33a812e62517f4aae57545a3122eb6, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.457
-      objectReference: {fileID: 0}
-    - target: {fileID: 4642709106596964, guid: ea33a812e62517f4aae57545a3122eb6, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 12.2631855
-      objectReference: {fileID: 0}
-    - target: {fileID: 4642709106596964, guid: ea33a812e62517f4aae57545a3122eb6, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4642709106596964, guid: ea33a812e62517f4aae57545a3122eb6, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4642709106596964, guid: ea33a812e62517f4aae57545a3122eb6, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4642709106596964, guid: ea33a812e62517f4aae57545a3122eb6, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4642709106596964, guid: ea33a812e62517f4aae57545a3122eb6, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 65028840558845262, guid: ea33a812e62517f4aae57545a3122eb6,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 1.2784178
-      objectReference: {fileID: 0}
-    - target: {fileID: 65028840558845262, guid: ea33a812e62517f4aae57545a3122eb6,
-        type: 2}
-      propertyPath: m_Center.y
-      value: 0.13920891
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ea33a812e62517f4aae57545a3122eb6, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1001 &548495813
 Prefab:
   m_ObjectHideFlags: 0
@@ -464,12 +412,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 691123345}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!114 &691123348 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114895115055412488, guid: 874b3ddac6fa0dc42926d3c826d95628,
-    type: 2}
-  m_PrefabInternal: {fileID: 691123345}
-  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &786609680
 Prefab:
   m_ObjectHideFlags: 0
@@ -933,14 +875,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1266418014}
-  Animal: {fileID: 1340749463452236, guid: f6593f6d5227d68479ca8ed5640b99e8, type: 2}
+  Animals:
+  - {fileID: 1340749463452236, guid: f6593f6d5227d68479ca8ed5640b99e8, type: 2}
+  - {fileID: 1228203936284032, guid: ea33a812e62517f4aae57545a3122eb6, type: 2}
   DemonCow: {fileID: 114846426630458136, guid: c2b8ef4fc0878464ea336184656a70ce, type: 2}
   AnimalName: Chicken
   NextLevel: Level 2
   SacrificesNeeded: 5
   SacrificeCounter: {fileID: 691123347}
   CaughtText: {fileID: 691123346}
-  ScreenFade: {fileID: 691123348}
 --- !u!4 &2103492498
 Transform:
   m_ObjectHideFlags: 0
