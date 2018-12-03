@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour {
+    public Player player;
     public GameObject Animal;
     public DemonCowSacrifice DemonCow;
     public string AnimalName;
@@ -44,6 +45,7 @@ public class LevelController : MonoBehaviour {
 
     void Update() {
         if (screenFading) {
+            player.lastSacrificeCount = sacrificesMade;
             float a = Mathf.Min(1f, ScreenFade.color.a + 0.005f);
             ScreenFade.color = new Color(0, 0, 0, a);
             if (a >= 1f) {

@@ -703,6 +703,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f06186a413e9fc44abf30e1058b4066e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1190399591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114368028533605182, guid: f06186a413e9fc44abf30e1058b4066e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1190399590}
+  m_Script: {fileID: 11500000, guid: 7fc14b94276a3894eaef9b42a985b3d6, type: 3}
 --- !u!1001 &1193688210
 Prefab:
   m_ObjectHideFlags: 0
@@ -1122,7 +1128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77715424795185d468d12b2e67271b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1190399591}
   Animal: {fileID: 1340749463452236, guid: f6593f6d5227d68479ca8ed5640b99e8, type: 2}
+  DemonCow: {fileID: 0}
   AnimalName: Duck
   NextLevel: Level 2
   SacrificesNeeded: 5
