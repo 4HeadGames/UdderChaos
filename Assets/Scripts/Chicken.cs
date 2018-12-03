@@ -15,7 +15,7 @@ public class Chicken : MonoBehaviour {
     private float rotationCooldown = 5;
     private float rotationTimer = 0;
     private float rotationDuration = 1;
-    private float rotation = 0;
+    private float rotation;
 
     private Outline outline;
     private Rigidbody body;
@@ -29,13 +29,20 @@ public class Chicken : MonoBehaviour {
         jumpTimer = randomJumpCooldown();
         velocityUpdateTimer = velocityUpdateCooldown;
         rotationUpdateTimer = rotationCooldown;
+
+        rotation = Random.Range(0, 360);
     }
 
     void Update() {
         jumpTimer -= Time.deltaTime;
         if (jumpTimer <= 0) {
             jumpTimer = randomJumpCooldown();
-            body.velocity += new Vector3(0, 3, 0);
+            velocity = Random.Range(minVelocity, maxVelocity);
+            Vector3 forward = transform.forward * velocity;
+            body.velocity += new Vector3(
+                forward.x,
+                3,
+                forward.z);
         }
 
         if (rotationTimer <= 0) {
@@ -50,18 +57,6 @@ public class Chicken : MonoBehaviour {
         if (rotationTimer >= 0) {
             transform.Rotate(new Vector3(0, rotation, 0));
             rotationTimer -= Time.deltaTime;
-        }
-
-        velocityUpdateTimer -= Time.deltaTime;
-        bool isJumping = body.velocity.y > 0;
-        if (velocityUpdateTimer <= 0 && !isJumping) {
-            velocityUpdateTimer = velocityUpdateCooldown;
-            velocity = Random.Range(minVelocity, maxVelocity);
-            Vector3 forward = transform.forward * velocity;
-            body.velocity = new Vector3(
-                forward.x,
-                body.velocity.y,
-                forward.z);
         }
     }
 

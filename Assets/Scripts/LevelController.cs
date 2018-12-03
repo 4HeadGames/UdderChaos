@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour {
     public Player player;
-    public GameObject Animal;
+    public GameObject[] Animals;
     public DemonCowSacrifice DemonCow;
     public string AnimalName;
     public string NextLevel;
@@ -35,7 +35,8 @@ public class LevelController : MonoBehaviour {
             rotation.x = 0;
             rotation.z = 0;
             rotation.w = 0;
-            var newChicken = Instantiate(Animal,
+            var newChicken = Instantiate(
+                Animals[Random.Range(0, Animals.Length)],
                 new Vector3(
                     Random.Range(backLeftCorner.x, forwardRightCorner.x),
                     1f,

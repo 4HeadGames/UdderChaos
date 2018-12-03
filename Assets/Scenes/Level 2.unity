@@ -700,6 +700,10 @@ Prefab:
       propertyPath: levelController
       value: 
       objectReference: {fileID: 2103492497}
+    - target: {fileID: 1865065055025038, guid: f06186a413e9fc44abf30e1058b4066e, type: 2}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f06186a413e9fc44abf30e1058b4066e, type: 2}
   m_IsPrefabAsset: 0
@@ -1130,7 +1134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1190399591}
   Animal: {fileID: 1340749463452236, guid: f6593f6d5227d68479ca8ed5640b99e8, type: 2}
-  DemonCow: {fileID: 0}
+  DemonCow: {fileID: 114846426630458136, guid: c2b8ef4fc0878464ea336184656a70ce, type: 2}
   AnimalName: Duck
   NextLevel: Level 2
   SacrificesNeeded: 5
