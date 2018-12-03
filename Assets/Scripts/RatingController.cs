@@ -1,14 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class RatingController : MonoBehaviour {
     public DemonCow demonCow;
+
+    private RawImage screenFade;
     private string[] script;
     private int line = 0;
+    private bool screenFading = false;
 
     void Start() {
+        screenFade = GameObject.Find("Screen Fade").GetComponent<RawImage>();
+
         switch (Store.MissingSacrifices) {
             case 0:
                 script = new string[] {
@@ -56,12 +62,21 @@ public class RatingController : MonoBehaviour {
     }
 
     void Update() {
+        if (screenFading) {
+            float a = Mathf.Min(1f, screenFade.color.a + 0.005f);
+            screenFade.color = new Color(0, 0, 0, a);
+            if (a >= 1f) {
+                SceneManager.LoadScene(Store.NextLevel, LoadSceneMode.Single);
+            }
+            return;
+        }
+
         if (!demonCow.Talking()) {
             if (line < script.Length) {
                 demonCow.SayText(script[line]);
                 line += 1;
             } else {
-                SceneManager.LoadScene(Store.NextLevel, LoadSceneMode.Single);
+                screenFading = true;
             }
         }
     }
