@@ -49,7 +49,11 @@ public class LevelController : MonoBehaviour {
         }
     }
 
+    private float skyBoxRotation = 0;
     void Update() {
+        skyBoxRotation += 0.01f;
+        RenderSettings.skybox.SetFloat("_Rotation", skyBoxRotation);
+
         if (screenFading) {
             float a = Mathf.Min(1f, screenFade.color.a + 0.005f);
             screenFade.color = new Color(0, 0, 0, a);
