@@ -66,7 +66,7 @@ public class RatingController : MonoBehaviour {
             float a = Mathf.Min(1f, screenFade.color.a + 0.005f);
             screenFade.color = new Color(0, 0, 0, a);
             if (a >= 1f) {
-                SceneManager.LoadScene(Store.NextLevel, LoadSceneMode.Single);
+                SceneManager.LoadScene("Feeding", LoadSceneMode.Single);
             }
             return;
         }
