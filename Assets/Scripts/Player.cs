@@ -22,7 +22,7 @@ public class Player : MonoBehaviour {
         maxHunger = 10;
         currentHunger = maxHunger;
 
-        hungerBar.value = CalculateHunger();
+        if (hungerBar) hungerBar.value = CalculateHunger();
     }
 
     void Update() {
