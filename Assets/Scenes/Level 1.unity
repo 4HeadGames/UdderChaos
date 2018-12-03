@@ -397,21 +397,13 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1459125316351716, guid: 874b3ddac6fa0dc42926d3c826d95628, type: 2}
+      propertyPath: m_Name
+      value: Screen Fade
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874b3ddac6fa0dc42926d3c826d95628, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &691123346 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114639190843066948, guid: 874b3ddac6fa0dc42926d3c826d95628,
-    type: 2}
-  m_PrefabInternal: {fileID: 691123345}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!114 &691123347 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114155294709610544, guid: 874b3ddac6fa0dc42926d3c826d95628,
-    type: 2}
-  m_PrefabInternal: {fileID: 691123345}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &786609680
 Prefab:
   m_ObjectHideFlags: 0
@@ -881,9 +873,6 @@ MonoBehaviour:
   DemonCow: {fileID: 114846426630458136, guid: c2b8ef4fc0878464ea336184656a70ce, type: 2}
   AnimalName: Chicken
   NextLevel: Level 2
-  SacrificesNeeded: 5
-  SacrificeCounter: {fileID: 691123347}
-  CaughtText: {fileID: 691123346}
 --- !u!4 &2103492498
 Transform:
   m_ObjectHideFlags: 0
