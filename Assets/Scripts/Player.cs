@@ -21,8 +21,7 @@ public class Player : MonoBehaviour {
 
     void Start() {
         maxHunger = 10;
-        currentHunger = 0;
-        currentHunger = currentHunger;
+        currentHunger = 10;
 
         if (hungerBar) hungerBar.value = CalculateHunger();
     }
@@ -81,10 +80,5 @@ public class Player : MonoBehaviour {
         Destroy(hit.transform.gameObject);
         currentHunger += 2;
         hungerBar.value = CalculateHunger();
-
-        if (currentHunger <= 0) {
-            // u ded
-            // Destroy(gameObject);
-        }
     }
 }
