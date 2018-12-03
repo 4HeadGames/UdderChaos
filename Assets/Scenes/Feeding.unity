@@ -2427,7 +2427,7 @@ Prefab:
     - target: {fileID: 114368028533605182, guid: f06186a413e9fc44abf30e1058b4066e,
         type: 2}
       propertyPath: lastSacrificeCount
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f06186a413e9fc44abf30e1058b4066e, type: 2}
@@ -3402,6 +3402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 61573432}
+  camera: {fileID: 1329901747}
   aiCows:
   - {fileID: 114902819962210504, guid: 7545783e457be7b419cfbd51d3ebcd1d, type: 2}
   - {fileID: 114835546626881180, guid: e8b7cd3cb0f9cec4683086f01edea285, type: 2}
@@ -3424,6 +3425,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: cfde0635f8655d546a6219224cfa6598,
     type: 3}
   m_PrefabInternal: {fileID: 1018411331}
+--- !u!20 &1329901747 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20063743998278014, guid: f06186a413e9fc44abf30e1058b4066e,
+    type: 2}
+  m_PrefabInternal: {fileID: 904793495}
 --- !u!1001 &1335672383
 Prefab:
   m_ObjectHideFlags: 0
