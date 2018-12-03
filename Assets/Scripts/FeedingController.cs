@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FeedingController : MonoBehaviour {
     public Player player;
+    public Camera camera;
     public AICow[] aiCows;
     public Grass grass;
     private float sacrificeMod;
@@ -49,6 +50,22 @@ public class FeedingController : MonoBehaviour {
     }
 	
 	void Update () {
-		
+		if (player.currentHunger == 0) {
+            FieryHole();
+        }
 	}
+
+    void FieryHole() {
+        // fall through a fiery hole
+        // Step 1 - lock player movement
+        // Step 2 - Rotate player to be facing up
+        // Step 3 - Pull player through ground
+        // Step 4 - Reload scene
+
+        player.canMove = false;
+        player.GetComponent<Collider>().enabled = false;
+        camera.GetComponent<MouseLook>().canRotate = false;
+        var target = new Quaternion(-90.0f, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
+        player.transform.Rotate(-90, player.transform.rotation.y, player.transform.rotation.z);
+    }
 }
