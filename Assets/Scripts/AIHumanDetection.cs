@@ -14,7 +14,7 @@ public class AIHumanDetection : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.name == "Cow") {
+        if (other.name == "Player") {
             aiHuman.FoundPlayer(other.GetComponent<Player>());
         }
     }

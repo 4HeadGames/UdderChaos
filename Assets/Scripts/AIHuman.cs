@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AIHuman : MonoBehaviour {
-    public float speed;
-    public Vector2[] pathing;
-    public LevelController levelController;
-
+    private LevelController levelController;
     private AudioSource audioSource;
     private AudioClip[] audioClips;
     private int pathIndex;
@@ -15,22 +12,18 @@ public class AIHuman : MonoBehaviour {
     private Player playerTarget;
 
     void Start() {
-        // audioSource = GetComponent<AudioSource>();
-
-        // audioClips = new AudioClip[] {};
+        levelController = GameObject.Find("Level Controller").GetComponent<LevelController>();
     }
 
     void Update() {
-        float step = speed * Time.deltaTime;
+        float step = 10 * Time.deltaTime;
         float vertical = 0.2f;
 
-        var targetPath = pathing[pathIndex];
-        var targetPosition = new Vector3(targetPath.x, vertical, targetPath.y);
-
-        if (playerTarget != null) {
-            targetPosition = new Vector3(playerTarget.transform.position.x, vertical, playerTarget.transform.position.z);
-            step *= 2;
+        if (playerTarget == null) {
+            return;
         }
+
+        var targetPosition = new Vector3(playerTarget.transform.position.x, vertical, playerTarget.transform.position.z);
 
         var lookPos = targetPosition - transform.position;
         lookPos.y = 0;
@@ -45,27 +38,7 @@ public class AIHuman : MonoBehaviour {
         var sqrDistance = minDistance * minDistance;
         var distance = transform.position - targetPosition;
         if (distance.sqrMagnitude < sqrDistance) {
-            if (playerTarget == null) {
-                nextPath();
-            } else {
-                levelController.PlayerCaught();
-            }
-        }
-    }
-
-    private void nextPath() {
-        if (forward) {
-            pathIndex += 1;
-            if (pathIndex == pathing.Length) {
-                forward = false;
-                pathIndex = pathing.Length - 1;
-            }
-        } else {
-            pathIndex -= 1;
-            if (pathIndex == -1) {
-                forward = true;
-                pathIndex = 0;
-            }
+            levelController.PlayerCaught();
         }
     }
 
