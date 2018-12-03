@@ -60,8 +60,8 @@ public class FeedingController : MonoBehaviour {
     }
 
     void Update() {
-        FieryDeath();
         if (player.currentHunger == 0) {
+            FieryDeath();
         }
     }
 
