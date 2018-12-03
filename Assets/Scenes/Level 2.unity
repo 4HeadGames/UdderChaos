@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.063361, g: 0.0609331, b: 0.061753586, a: 1}
+  m_IndirectSpecularColor: {r: 0.069386914, g: 0.06640443, b: 0.06304493, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -113,6 +113,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &6543988
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1935020440}
+    m_Modifications:
+    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.4246597
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -5.5250273
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 28.022947
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640340631863102, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
+      propertyPath: m_Name
+      value: Fence (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &39580358
 Prefab:
   m_ObjectHideFlags: 0
@@ -1629,69 +1675,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566,
     type: 2}
   m_PrefabInternal: {fileID: 306354323}
---- !u!1001 &315884908
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1935020440}
-    m_Modifications:
-    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.4246597
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -5.5250273
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 28.022947
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1640340631863102, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-      propertyPath: m_Name
-      value: Fence (4)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8c64df47e227a5d47bcb0e954e51d566, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!4 &315884909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4839065814725742, guid: 8c64df47e227a5d47bcb0e954e51d566,
     type: 2}
-  m_PrefabInternal: {fileID: 315884908}
+  m_PrefabInternal: {fileID: 6543988}
 --- !u!1001 &315920248
 Prefab:
   m_ObjectHideFlags: 0
@@ -8632,7 +8620,7 @@ MonoBehaviour:
   - {fileID: 1806716029528836, guid: 7a5de0c88c6d9cb45bb4da095aed2577, type: 2}
   DemonCow: {fileID: 114846426630458136, guid: c2b8ef4fc0878464ea336184656a70ce, type: 2}
   AnimalName: Duck
-  NextLevel: Level 2
+  NextLevel: Level 3
 --- !u!4 &2103492498
 Transform:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class MouseLook : MonoBehaviour {
 
 		player = transform.parent.gameObject;
         mouseLook.x = -player.transform.localRotation.eulerAngles.y;
-        mouseLook.y = player.transform.localRotation.eulerAngles.x;
+        mouseLook.y = -player.transform.localRotation.eulerAngles.x;
     }
 	
 	void Update () {

@@ -33,14 +33,12 @@ public class DemonCowSacrifice : MonoBehaviour {
                 SacrificeTarget.transform.position = Vector3.MoveTowards(
                     SacrificeTarget.transform.position,
                     transform.position, 0.05f);
-            }
-            if (isPlaying(animator) || isPlaying(sacrificeAnimator)) {
-                return;
-            }
-            if (!sacrificingPlayer) {
+                if (isPlaying(animator) || isPlaying(sacrificeAnimator)) {
+                    return;
+                }
                 Destroy(SacrificeTarget);
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
         } else if (sacrificeDelay <= 0) {
             if (!sacrificingPlayer) {
                 animator.Play("Despawn");

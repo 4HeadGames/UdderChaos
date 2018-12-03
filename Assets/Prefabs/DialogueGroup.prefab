@@ -244,13 +244,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602259895099584}
-  m_LocalRotation: {x: -0.20359643, y: -0, z: -0, w: 0.9790549}
+  m_LocalRotation: {x: -0.13052624, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 9.9, z: 7.9500003}
   m_LocalScale: {x: 5, y: 5.8013053, z: 4.7413807}
   m_Children: []
   m_Father: {fileID: 4256988109910742}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -23.495, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!4 &4256988109910742
 Transform:
   m_ObjectHideFlags: 1
@@ -599,10 +599,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc14b94276a3894eaef9b42a985b3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunger: 10
   levelController: {fileID: 0}
   speed: 10
   canMove: 0
+  hungerBar: {fileID: 0}
 --- !u!114 &114941776018904302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -620,7 +620,7 @@ MonoBehaviour:
   canRotate: 0
   mouseLook: {x: 0, y: 20}
   xAngleRange: {x: -10, y: 10}
-  yAngleRange: {x: 10, y: 30}
+  yAngleRange: {x: 0, y: 25}
 --- !u!198 &198099371566889328
 ParticleSystem:
   m_ObjectHideFlags: 1

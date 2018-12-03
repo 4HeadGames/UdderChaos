@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class FeedingController : MonoBehaviour {
@@ -10,15 +11,19 @@ public class FeedingController : MonoBehaviour {
     public AICow[] aiCows;
     public Grass grass;
 
+    private bool screenFading = false;
+    private RawImage screenFade;
     private float sacrificeMod;
     private Color initialSkyTint = new Color(128 / 255f, 128 / 255f, 128 / 255f);
     private Color initialGroundColor = new Color(17 / 255f, 36 / 255f, 9 / 255f);
     private float initialSkyExposure = 1.3f;
 
-    private float feedingTime = 30;
-    private float preIntroFeedingTime = 30;
+    private float feedingTime = 5;
+    private float preIntroFeedingTime = 5;
 
     void Start() {
+        screenFade = GameObject.Find("Screen Fade").GetComponent<RawImage>();
+
         RenderSettings.skybox.SetColor("_SkyTint", initialSkyTint);
         RenderSettings.skybox.SetColor("_GroundColor", initialGroundColor);
         RenderSettings.skybox.SetFloat("_Exposure", initialSkyExposure);
@@ -40,9 +45,9 @@ public class FeedingController : MonoBehaviour {
             rotation.w = 0;
             var newGrass = Instantiate(grass,
                 new Vector3(
-                    Random.Range(-30, 30),
+                    Random.Range(-25, 25),
                     0,
-                    Random.Range(-30, 30)),
+                    Random.Range(-25, 25)),
                 rotation);
             newGrass.name = "Grass";
         }
@@ -55,9 +60,9 @@ public class FeedingController : MonoBehaviour {
             var aiCow = aiCows[Random.Range(0, aiCows.Length)];
             var newAiCow = Instantiate(aiCow,
                 new Vector3(
-                    Random.Range(-30, 30),
-                    2,
-                    Random.Range(-30, 30)),
+                    Random.Range(-25, 25),
+                    0.5f,
+                    Random.Range(-25, 25)),
                 rotation);
             newAiCow.name = "AI Cow";
         }
@@ -68,26 +73,74 @@ public class FeedingController : MonoBehaviour {
         }
     }
 
+    private string nextLevel;
     void Update() {
+        if (screenFading || stareTime > 0) {
+            if (screenFading) {
+                float a = Mathf.Min(1f, screenFade.color.a + 0.005f);
+                screenFade.color = new Color(0, 0, 0, a);
+                if (a >= 1f) {
+                    SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
+                }
+            } else if (stareTime > 0) {
+                stareTime -= Time.deltaTime;
+                if (stareTime <= 0) {
+                    screenFading = true;
+                }
+            }
+            return;
+        }
+
         if (Store.PreIntro) {
             preIntroFeedingTime -= Time.deltaTime;
             if (preIntroFeedingTime <= 0) {
+                PopInMoogramal();
                 Store.PreIntro = false;
-                SceneManager.LoadScene("Intro", LoadSceneMode.Single);
+                nextLevel = "Intro";
             }
-        }
-
-        if (!Store.PreIntro && player.currentHunger == 0) {
-            FieryDeath();
+        } else {
+            feedingTime -= Time.deltaTime;
+            if (feedingTime <= 0) {
+                if (player.currentHunger == 0) {
+                    FieryDeath();
+                } else {
+                    nextLevel = Store.NextLevel;
+                    screenFading = true;
+                }
+            }
         }
     }
 
-    private bool startedFiery = false;
     private float stareTime;
     private float stareTotalTime = 4;
+
+    void PopInMoogramal() {
+        var rigidBody = player.GetComponent<Rigidbody>();
+        rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
+        var demonCowPosition = player.transform.position + 12 * player.transform.forward;
+        demonCowPosition.y = 2;
+        demonCow = Instantiate(DemonCow,
+            demonCowPosition,
+            Quaternion.identity);
+        demonCow.transform.LookAt(camera.transform);
+        demonCow.SacrificeTarget = player.gameObject;
+        demonCow.sacrificingPlayer = true;
+
+        player.canMove = false;
+
+        var mouseLook = camera.GetComponent<MouseLook>();
+        mouseLook.canRotate = false;
+        player.transform.LookAt(demonCow.transform);
+        var xAngle = player.transform.localRotation.eulerAngles.y;
+        mouseLook.xAngleRange = new Vector2(xAngle, xAngle);
+        mouseLook.yAngleRange = new Vector2(5, 5);
+
+        stareTime = stareTotalTime;
+    }
+
+    private bool startedFiery = false;
     private DemonCowSacrifice demonCow;
-    private Material skyBoxInitial;
-    private Material skyBoxTarget;
 
     void FieryDeath() {
         var mouseLook = camera.GetComponent<MouseLook>();
@@ -109,8 +162,6 @@ public class FeedingController : MonoBehaviour {
             var rigidBody = player.GetComponent<Rigidbody>();
             rigidBody.constraints = RigidbodyConstraints.FreezeAll;
 
-            skyBoxInitial = RenderSettings.skybox;
-
             startedFiery = true;
             var demonCowPosition = player.transform.position + 12 * player.transform.forward;
             demonCowPosition.y = 2;
@@ -123,13 +174,12 @@ public class FeedingController : MonoBehaviour {
 
             player.canMove = false;
             mouseLook.canRotate = false;
-            mouseLook.xAngleRange = new Vector2(0, 0);
+            player.transform.LookAt(demonCow.transform);
+            var xAngle = player.transform.localRotation.eulerAngles.y;
+            mouseLook.xAngleRange = new Vector2(xAngle, xAngle);
+            mouseLook.yAngleRange = new Vector2(5, 5);
 
             stareTime = stareTotalTime;
-        }
-
-        if (demonCow != null) {
-            mouseLook.yAngleRange = new Vector2(5, 5);
         }
 
         if (stareTime > 0) {
