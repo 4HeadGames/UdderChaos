@@ -82,6 +82,9 @@ public class FeedingController : MonoBehaviour {
                 float a = Mathf.Min(1f, screenFade.color.a + 0.005f);
                 screenFade.color = new Color(0, 0, 0, a);
                 if (a >= 1f) {
+                    if (startedFiery) {
+                        SceneManager.LoadScene(Store.PreviousLevel, LoadSceneMode.Single);
+                    }
                     SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
                 }
             } else if (stareTime > 0) {

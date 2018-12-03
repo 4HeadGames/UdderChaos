@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.069386914, g: 0.06640443, b: 0.06304493, a: 1}
+  m_IndirectSpecularColor: {r: 0.057923228, g: 0.05401875, b: 0.052098922, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8621,6 +8621,7 @@ MonoBehaviour:
   DemonCow: {fileID: 114846426630458136, guid: c2b8ef4fc0878464ea336184656a70ce, type: 2}
   AnimalName: Duck
   NextLevel: Level 3
+  PreviousLevel: Level 2
 --- !u!4 &2103492498
 Transform:
   m_ObjectHideFlags: 0

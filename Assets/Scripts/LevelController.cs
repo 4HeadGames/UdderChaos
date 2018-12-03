@@ -10,6 +10,7 @@ public class LevelController : MonoBehaviour {
     public DemonCowSacrifice DemonCow;
     public string AnimalName;
     public string NextLevel;
+    public string PreviousLevel;
 
     private GameObject animalSpawnRegion;
     private RawImage screenFade;
@@ -47,6 +48,8 @@ public class LevelController : MonoBehaviour {
                 rotation);
             newChicken.name = "Chicken";
         }
+
+        Store.PreviousLevel = PreviousLevel;
     }
 
     private float skyBoxRotation = 0;
