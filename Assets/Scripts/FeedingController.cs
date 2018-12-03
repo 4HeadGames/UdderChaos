@@ -25,7 +25,7 @@ public class FeedingController : MonoBehaviour {
 
         var playerCollider = player.GetComponent<Collider>();
 
-        sacrificeMod = (Store.NeededSacrifices - Store.MissingSacrifices) * 0.1f;
+        sacrificeMod = (Store.SacrificesNeeded - Store.MissingSacrifices) * 0.1f;
 
         var grassCount = 200;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chicken : MonoBehaviour {
+public class AIAnimal : MonoBehaviour {
     private float jumpTimer;
 
     private float velocity = 2;

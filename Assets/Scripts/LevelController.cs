@@ -10,13 +10,11 @@ public class LevelController : MonoBehaviour {
     public DemonCowSacrifice DemonCow;
     public string AnimalName;
     public string NextLevel;
-    public int SacrificesNeeded;
-    public Text SacrificeCounter;
-    public Text CaughtText;
 
+    private GameObject animalSpawnRegion;
     private RawImage screenFade;
-    private Vector2 backLeftCorner = new Vector2(-15, 5);
-    private Vector2 forwardRightCorner = new Vector2(15, 75);
+    private Text sacrificesCounter;
+    private Text caughtText;
 
     private int sacrificesMade = 0;
     private bool screenFading = false;
@@ -24,14 +22,18 @@ public class LevelController : MonoBehaviour {
     private DemonCowSacrifice spawnedDemonCow;
 
     void Start() {
-        screenFade = GameObject.Find("RawImage").GetComponent<RawImage>(); 
+        animalSpawnRegion = GameObject.Find("Animal Spawn Region");
+        screenFade = GameObject.Find("Screen Fade").GetComponent<RawImage>();
+        sacrificesCounter = GameObject.Find("Sacrifices Counter").GetComponent<Text>();
+        caughtText = GameObject.Find("Caught Text").GetComponent<Text>();
 
         Store.AnimalName = AnimalName;
-        Store.MissingSacrifices = SacrificesNeeded;
+        Store.MissingSacrifices = Store.SacrificesNeeded;
 
         updateSacrificeText();
 
-        for (int i = 0; i < 20; i++) {
+        var bounds = animalSpawnRegion.GetComponent<Collider>().bounds;
+        for (int i = 0; i < 5; i++) {
             Quaternion rotation = Random.rotation;
             rotation.x = 0;
             rotation.z = 0;
@@ -39,9 +41,9 @@ public class LevelController : MonoBehaviour {
             var newChicken = Instantiate(
                 Animals[Random.Range(0, Animals.Length)],
                 new Vector3(
-                    Random.Range(backLeftCorner.x, forwardRightCorner.x),
+                    Random.Range(bounds.min.x, bounds.max.x),
                     1f,
-                    Random.Range(backLeftCorner.y, forwardRightCorner.y)),
+                    Random.Range(bounds.min.z, bounds.max.z)),
                 rotation);
             newChicken.name = "Chicken";
         }
@@ -72,10 +74,10 @@ public class LevelController : MonoBehaviour {
         spawnedDemonCow.transform.LookAt(gameObject.transform);
         spawnedDemonCow.SacrificeTarget = gameObject;
         sacrificesMade += 1;
-        sacrificesMade = Mathf.Clamp(sacrificesMade, 0, SacrificesNeeded);
+        sacrificesMade = Mathf.Clamp(sacrificesMade, 0, Store.SacrificesNeeded);
 
-        Store.MissingSacrifices = SacrificesNeeded - sacrificesMade;
-        if (sacrificesMade >= SacrificesNeeded) {
+        Store.MissingSacrifices = Store.SacrificesNeeded - sacrificesMade;
+        if (sacrificesMade >= Store.SacrificesNeeded) {
             screenFading = true;
         }
 
@@ -88,10 +90,10 @@ public class LevelController : MonoBehaviour {
     }
 
     private void setCaughtText() {
-        CaughtText.text = "You've been caught!";
+        caughtText.text = "You've been caught!";
     }
 
     private void updateSacrificeText() {
-        SacrificeCounter.text = AnimalName + " Sacrifices: " + sacrificesMade + " / " + SacrificesNeeded;
+        sacrificesCounter.text = AnimalName + " Sacrifices: " + sacrificesMade + " / " + Store.SacrificesNeeded;
     }
 }
