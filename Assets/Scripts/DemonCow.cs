@@ -43,7 +43,7 @@ public class DemonCow : MonoBehaviour {
     void Update () {
         if (talkingDuration > 0) {
             talkingDuration -= Time.deltaTime;
-            if (Random.value > 0.98) {
+            if (Random.value > 0.96) {
                 audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length - 1)]);
             }
         }
@@ -68,16 +68,12 @@ public class DemonCow : MonoBehaviour {
            renderer.material.SetColor("_EmissionColor", color);
         }
 
-        //transform.position = initialPosition + new Vector3(
-        //    Random.Range(-0.01f, 0.01f), Random.Range(-0.01f, 0.01f), Random.Range(-0.01f, 0.01f));
-        // transform.LookAt(player.transform);
-
         text.color = color;
     }
 
     public void SayText(string dialogue) {
         var words = dialogue.Split(' ').Length;
-        talkingDuration = words * 1;
+        talkingDuration = words * 0.8f;
 
         text.text = dialogue;
     }
