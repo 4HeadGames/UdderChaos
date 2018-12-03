@@ -18,8 +18,8 @@ public class FeedingController : MonoBehaviour {
     private Color initialGroundColor = new Color(17 / 255f, 36 / 255f, 9 / 255f);
     private float initialSkyExposure = 1.3f;
 
-    private float feedingTime = 5;
-    private float preIntroFeedingTime = 5;
+    private float feedingTime = 10;
+    private float preIntroFeedingTime = 15;
 
     void Start() {
         screenFade = GameObject.Find("Screen Fade").GetComponent<RawImage>();
@@ -32,7 +32,7 @@ public class FeedingController : MonoBehaviour {
 
         sacrificeMod = (Store.SacrificesNeeded - Store.MissingSacrifices) * 0.1f;
 
-        var grassCount = 200;
+        var grassCount = 30;
 
         if (Store.MissingSacrifices > 0) {
             grassCount = Mathf.FloorToInt(200 * sacrificeMod);
@@ -70,6 +70,8 @@ public class FeedingController : MonoBehaviour {
         if (Store.PreIntro) {
             GameObject.Find("HungerBar").GetComponent<RectTransform>().localScale = Vector3.zero;
             GameObject.Find("Hunger Label").GetComponent<RectTransform>().localScale = Vector3.zero;
+        } else {
+            GameObject.Find("Intro Text").GetComponent<RectTransform>().localScale = Vector3.zero;
         }
     }
 
@@ -94,6 +96,7 @@ public class FeedingController : MonoBehaviour {
         if (Store.PreIntro) {
             preIntroFeedingTime -= Time.deltaTime;
             if (preIntroFeedingTime <= 0) {
+                GameObject.Find("Intro Text").GetComponent<RectTransform>().localScale = Vector3.zero;
                 PopInMoogramal();
                 Store.PreIntro = false;
                 nextLevel = "Intro";
