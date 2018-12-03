@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.063367456, g: 0.06097351, b: 0.061757848, a: 1}
+  m_IndirectSpecularColor: {r: 0.04202584, g: 0.038941484, b: 0.039903965, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5711,7 +5711,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2012390761}
   Animals:
-  - {fileID: 1806716029528836, guid: 7a5de0c88c6d9cb45bb4da095aed2577, type: 2}
+  - {fileID: 1136334506122398, guid: 6ddfbf8fdd25e4c4b83cd8e658b0460a, type: 2}
+  - {fileID: 1136334506122398, guid: 6ddfbf8fdd25e4c4b83cd8e658b0460a, type: 2}
+  - {fileID: 1136334506122398, guid: 6ddfbf8fdd25e4c4b83cd8e658b0460a, type: 2}
+  - {fileID: 1136334506122398, guid: 6ddfbf8fdd25e4c4b83cd8e658b0460a, type: 2}
+  - {fileID: 1136334506122398, guid: 6ddfbf8fdd25e4c4b83cd8e658b0460a, type: 2}
   DemonCow: {fileID: 114846426630458136, guid: c2b8ef4fc0878464ea336184656a70ce, type: 2}
   AnimalName: Pig
   NextLevel: Level 4
