@@ -22,12 +22,13 @@ public class AIHuman : MonoBehaviour {
 
     void Update() {
         float step = speed * Time.deltaTime;
+        float vertical = 0.2f;
 
         var targetPath = pathing[pathIndex];
-        var targetPosition = new Vector3(targetPath.x, 1, targetPath.y);
+        var targetPosition = new Vector3(targetPath.x, vertical, targetPath.y);
 
         if (playerTarget != null) {
-            targetPosition = new Vector3(playerTarget.transform.position.x, 1, playerTarget.transform.position.z);
+            targetPosition = new Vector3(playerTarget.transform.position.x, vertical, playerTarget.transform.position.z);
             step *= 2;
         }
 
