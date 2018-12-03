@@ -43,6 +43,7 @@ public class AIHuman : MonoBehaviour {
     }
 
     public void FoundPlayer(Player player) {
+        Debug.Log(player);
         playerTarget = player;
     }
 }
