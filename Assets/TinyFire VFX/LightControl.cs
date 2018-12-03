@@ -8,7 +8,7 @@ public class LightControl : MonoBehaviour {
 	
 	void Update ()
     {
-        nRand = Random.RandomRange(4f, 5f);
-        this.transform.GetComponent<Light>().intensity = nRand;
+        nRand = Random.Range(4f, 5f);
+        transform.GetComponent<Light>().intensity = nRand;
 	}
 }
