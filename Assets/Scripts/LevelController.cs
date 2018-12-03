@@ -33,20 +33,22 @@ public class LevelController : MonoBehaviour {
 
         updateSacrificeText();
 
-        var bounds = animalSpawnRegion.GetComponent<Collider>().bounds;
-        for (int i = 0; i < 5; i++) {
-            Quaternion rotation = Random.rotation;
-            rotation.x = 0;
-            rotation.z = 0;
-            rotation.w = 0;
-            var newChicken = Instantiate(
-                Animals[Random.Range(0, Animals.Length)],
-                new Vector3(
-                    Random.Range(bounds.min.x, bounds.max.x),
-                    1f,
-                    Random.Range(bounds.min.z, bounds.max.z)),
-                rotation);
-            newChicken.name = "Chicken";
+        if (animalSpawnRegion) {
+            var bounds = animalSpawnRegion.GetComponent<Collider>().bounds;
+            for (int i = 0; i < 5; i++) {
+                Quaternion rotation = Random.rotation;
+                rotation.x = 0;
+                rotation.z = 0;
+                rotation.w = 0;
+                var newChicken = Instantiate(
+                    Animals[Random.Range(0, Animals.Length)],
+                    new Vector3(
+                        Random.Range(bounds.min.x, bounds.max.x),
+                        1f,
+                        Random.Range(bounds.min.z, bounds.max.z)),
+                    rotation);
+                newChicken.name = "Chicken";
+            }
         }
 
         Store.PreviousLevel = PreviousLevel;
