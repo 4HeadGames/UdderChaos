@@ -76,7 +76,14 @@ public class FeedingController : MonoBehaviour {
         var mouseLook = camera.GetComponent<MouseLook>();
 
         if (!startedFiery) {
-            GameObject.Find("HungerBar").GetComponent<RectTransform>().localScale = Vector3.zero; ;
+            foreach (var cow in GameObject.FindGameObjectsWithTag("AI Cow")) {
+                Destroy(cow);
+            }
+            foreach (var grass in GameObject.FindGameObjectsWithTag("Grass")) {
+                Destroy(grass);
+            }
+
+            GameObject.Find("HungerBar").GetComponent<RectTransform>().localScale = Vector3.zero;
             GameObject.Find("Hunger Label").GetComponent<RectTransform>().localScale = Vector3.zero;
 
             foreach (var cow in GameObject.FindGameObjectsWithTag("AI Cow")) {
@@ -118,8 +125,8 @@ public class FeedingController : MonoBehaviour {
             RenderSettings.skybox.SetFloat("_Exposure",
                 Mathf.Lerp(initialSkyExposure, 0, lerpTime));
         } else {
-            foreach (var cow in GameObject.FindGameObjectsWithTag("AI Cow")) {
-                Destroy(cow);
+            foreach (var fence in GameObject.FindGameObjectsWithTag("Fence")) {
+                Destroy(fence);
             }
             var ground = GameObject.Find("Ground");
             Destroy(ground);
