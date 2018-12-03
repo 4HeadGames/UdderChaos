@@ -17,10 +17,12 @@ public class Player : MonoBehaviour {
     public float currentHunger { get; set; }
     public float maxHunger { get; set; }
     public Slider hungerBar;
+    public float lastSacrificeCount;
 
     void Start() {
         maxHunger = 10;
-        currentHunger = maxHunger;
+        currentHunger = 0;
+        currentHunger = currentHunger;
 
         if (hungerBar) hungerBar.value = CalculateHunger();
     }
@@ -77,7 +79,7 @@ public class Player : MonoBehaviour {
 
     private void eatGrass() {
         Destroy(hit.transform.gameObject);
-        currentHunger -= 2;
+        currentHunger += 2;
         hungerBar.value = CalculateHunger();
 
         if (currentHunger <= 0) {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -661,6 +661,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f06186a413e9fc44abf30e1058b4066e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1266418014 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114368028533605182, guid: f06186a413e9fc44abf30e1058b4066e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1266418013}
+  m_Script: {fileID: 11500000, guid: 7fc14b94276a3894eaef9b42a985b3d6, type: 3}
 --- !u!1 &1688368243
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,6 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77715424795185d468d12b2e67271b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1266418014}
   Animal: {fileID: 1340749463452236, guid: f6593f6d5227d68479ca8ed5640b99e8, type: 2}
   DemonCow: {fileID: 114846426630458136, guid: c2b8ef4fc0878464ea336184656a70ce, type: 2}
   AnimalName: Chicken
