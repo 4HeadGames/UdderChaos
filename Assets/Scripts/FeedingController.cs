@@ -6,9 +6,19 @@ public class FeedingController : MonoBehaviour {
     public Player player;
     public AICow[] aiCows;
     public Grass grass;
+    private float sacrificeMod;
 	void Start () {
         var playerCollider = player.GetComponent<Collider>();
-        for (int i = 0; i < 200; i++) {
+        
+        sacrificeMod = player.lastSacrificeCount * 0.1f;
+
+        var grassCount = 200;
+        
+        if (player.lastSacrificeCount < 5) {
+            grassCount = Mathf.FloorToInt(200.0f * sacrificeMod);
+        }
+
+        for (int i = 0; i < grassCount; i++) {
             Quaternion rotation = Random.rotation;
             rotation.x = 0;
             rotation.z = 0;

@@ -2419,6 +2419,16 @@ Prefab:
       propertyPath: hungerBar
       value: 
       objectReference: {fileID: 374048031}
+    - target: {fileID: 114368028533605182, guid: f06186a413e9fc44abf30e1058b4066e,
+        type: 2}
+      propertyPath: lastSacriceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368028533605182, guid: f06186a413e9fc44abf30e1058b4066e,
+        type: 2}
+      propertyPath: lastSacrificeCount
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f06186a413e9fc44abf30e1058b4066e, type: 2}
   m_IsPrefabAsset: 0
