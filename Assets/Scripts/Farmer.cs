@@ -21,7 +21,7 @@ public class Farmer : MonoBehaviour {
 
 	public void SayText(string dialogue) {
         var words = dialogue.Split(' ').Length;
-        talkingDuration = words * 0.1f;
+        talkingDuration = words * 0.5f;
 
         text.text = dialogue;
     }
