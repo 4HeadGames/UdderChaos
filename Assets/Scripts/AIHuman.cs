@@ -16,7 +16,7 @@ public class AIHuman : MonoBehaviour {
     }
 
     void Update() {
-        float step = 10 * Time.deltaTime;
+        float step = 1.5f * Time.deltaTime;
         float vertical = 0.2f;
 
         if (playerTarget == null) {

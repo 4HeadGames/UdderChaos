@@ -47,7 +47,11 @@ public class LevelController : MonoBehaviour {
                         1f,
                         Random.Range(bounds.min.z, bounds.max.z)),
                     rotation);
-                newChicken.name = "Chicken";
+                newChicken.name = "Animal";
+            }
+        } else {
+            for (int i = 0; i < Animals.Length; i++) {
+                Animals[i].name = "Animal";
             }
         }
 
@@ -70,10 +74,12 @@ public class LevelController : MonoBehaviour {
     }
 
     public void Sacrifice(GameObject gameObject) {
+        Debug.Log("wtf");
         if (spawnedDemonCow != null) {
             // Can only sacrifice one at a time.
             return;
         }
+        
         var player = GameObject.Find("Player");
         var demonCowPosition = player.transform.position + 8 * player.transform.forward;
         demonCowPosition.y = 2;
